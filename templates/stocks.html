@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATA</title>
+    <link rel = "stylesheet" href="/static/css/style_stocks.css" />
+</head>
+
+
+<body>
+
+<!--Header of website-->
+
+    <header class="header_sector">
+        <section class="TV_TickerTapeWidget">
+            <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Ticker Tape</span></a> by TradingView</div> -->
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                {
+                "symbols" : [
+                {
+                    "proName": "FOREXCOM:SPXUSD",
+                    "title": "S&P 500"
+                },
+                {
+                    "proName": "FOREXCOM:NSXUSD",
+                    "title": "Nasdaq 100"
+                },
+                {
+                    "proName": "FX_IDC:EURUSD",
+                    "title": "EUR/USD"
+                },
+                {
+                    "proName": "BITSTAMP:BTCUSD",
+                    "title": "BTC/USD"
+                },
+                {
+                    "proName": "BITSTAMP:ETHUSD",
+                    "title": "ETH/USD"
+                }
+                ],
+                "showSymbolLogo": true,
+                "colorTheme": "light",
+                "isTransparent": false,
+                "displayMode": "adaptive",
+                "locale": "en"
+            }
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
+
+        </section>
+    
+        <section class = "navbar">
+
+            <div class="navbar__brand">
+                <img src="/static/src/cata.png" alt="CATA Logo" class="navbar__logo"</>
+            </div>
+            <ul class="navbar__navigation">
+                <li class="navbar__navigation-item"><a href="{{url_for('home')}}" class="navbar__link">Market</a></li>
+                <li class="navbar__navigation-item"><a href="{{url_for('page_stocks')}}" class="navbar__link">Stocks</a></li>
+                <li class="navbar__navigation-item"><a href="/backtest-vwap/" class="navbar__link">BackTesting: VWAP</a></li>
+                <li class="navbar__navigation-item"><a href="/backtest-sma/" class="navbar__link">BackTesting: SMA</a></li>
+                <li class="navbar__navigation-item"><a href="/backtest-rsi/" class="navbar__link">BackTesting: RSI</a></li>
+            </ul>
+
+        </section>
+
+    </header>
+
+<!--Content of website-->
+<main class = "main">
+    <div class = "main_div">
+
+        <sector class = "main_searchbar">
+            <form action="/stocks" method="POST">
+                <div class="form__input">
+                    <label for="ticker-field"></label>
+                    <input type="text" name="ticker" id = "ticker-field" class = "main_searchbar_search" placeholder= "{{ ticker }}">
+                    <button type = "submit" class = " main_searchbar_btn">Search</button>
+                </div>
+            </form>
+        </sector>
+
+
+        <sector class = "flex-container">
+            
+            <!-- TradingView Widget BEGIN Symbol info widget -->
+            <div class="flex-child SymbolInfo">
+                <div class="tradingview-widget-container__widget"></div>
+                <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">AAPL Price Today</span></a> by TradingView</div> -->
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js" async>
+                {
+                "symbol": "{{ ticker }}",
+                "width": 800,
+                "locale": "en",
+                "colorTheme": "light",
+                "isTransparent": false
+                }
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
+
+            <!-- TradingView Widget BEGIN Symbol mini bar-->
+            <div class="flex-child SymbolMini">
+                <div class="tradingview-widget-container__widget"></div>
+                <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/EURUSD/?exchange=FX" rel="noopener" target="_blank"><span class="blue-text">EURUSD Rates</span></a> by TradingView</div> -->
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                {
+                "symbol": "{{ ticker }}",
+                "width": 400,
+                "height": 175,
+                "locale": "en",
+                "dateRange": "12M",
+                "colorTheme": "light",
+                "trendLineColor": "#37a6ef",
+                "underLineColor": "#E3F2FD",
+                "isTransparent": false,
+                "autosize": false,
+                "largeChartUrl": ""
+                }
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
+
+            <!-- TradingView Widget BEGIN -->
+            <div class="flex-child SymbolChart">
+                <div id="tradingview_3e2f0"></div>
+                <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">AAPL Chart</span></a> by TradingView</div> -->
+                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                <script type="text/javascript">
+                new TradingView.widget(
+                {
+                "width": 910,
+                "height": 700,
+                "symbol": "{{ ticker }}",
+                "interval": "D",
+                "timezone": "Etc/UTC",
+                "theme": "light",
+                "style": "1",
+                "locale": "en",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "allow_symbol_change": true,
+                "container_id": "tradingview_3e2f0"
+                }
+                );
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
+
+
+            <!-- TradingView Widget BEGIN Financials widget-->
+            <div class="flex-child SymbolFinancials">
+                <div class="tradingview-widget-container__widget"></div>
+                <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">AAPL Fundamental Data</span></a> by TradingView</div> -->
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async>
+                {
+                "symbol": "{{ ticker }}",
+                "colorTheme": "light",
+                "isTransparent": false,
+                "largeChartUrl": "",
+                "displayMode": "regular",
+                "width": 480,
+                "height": 700,
+                "locale": "en"
+                }
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
+
+
+            <!-- TradingView Widget BEGIN Profile widget-->
+            <div class="flex-child SymboProfile">
+                <div class="tradingview-widget-container__widget"></div>
+                <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">AAPL Profile</span></a> by TradingView</div> -->
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-profile.js" async>
+                {
+                "symbol": "{{ ticker }}",
+                "width": 1000,
+                "height": 500,
+                "colorTheme": "light",
+                "isTransparent": false,
+                "locale": "en"
+                }
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
+        </sector>
+
+    </div>
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Footer of website-->
+    <footer class = "footer">
+   
+        <div class="footer__content">
+
+            <section class="left">
+                <a class="footer__item">Made by Guangbin Jin</a>
+                <a class="footer__item">About</a>
+            </section>
+
+            <section class="right">
+                <div class="footer__column">
+                    <a class="footer__item" href="{{url_for('home')}}">Market Overview</a>
+                    <a class="footer__item" href="{{url_for('page_stocks')}}">Stock Details</a>
+                </div>
+
+                <div class="footer__column">
+                    <a class="footer__item" href="/backtest-vwap/">Back-testing: VWAP</a>
+                    <a class="footer__item" href="/backtest-sma/">Back-testing: SMA</a>
+                    <a class="footer__item" href="/backtest-rsi/">Back-ack-testing: RSI</a>
+                </div>
+
+            </section>
+
+
+    </footer>
+
+    
+</body>
+
+</html>

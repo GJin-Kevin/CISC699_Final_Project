@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATA</title>
+    <link rel = "stylesheet" href="/static/css/style_market.css" />
+</head>
+
+
+<body>
+
+<!--Header of website-->
+
+    <header class="header_sector">
+        <section class="TV_TickerTapeWidget">
+            <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Ticker Tape</span></a> by TradingView</div> -->
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                {
+                "symbols" : [
+                {
+                    "proName": "FOREXCOM:SPXUSD",
+                    "title": "S&P 500"
+                },
+                {
+                    "proName": "FOREXCOM:NSXUSD",
+                    "title": "Nasdaq 100"
+                },
+                {
+                    "proName": "FX_IDC:EURUSD",
+                    "title": "EUR/USD"
+                },
+                {
+                    "proName": "BITSTAMP:BTCUSD",
+                    "title": "BTC/USD"
+                },
+                {
+                    "proName": "BITSTAMP:ETHUSD",
+                    "title": "ETH/USD"
+                }
+                ],
+                "showSymbolLogo": true,
+                "colorTheme": "light",
+                "isTransparent": false,
+                "displayMode": "adaptive",
+                "locale": "en"
+            }
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
+
+        </section>
+    
+        <section class = "navbar">
+
+            <div class="navbar__brand">
+                <img src="/static/src/cata.png" alt="CATA Logo" class="navbar__logo"</>
+            </div>
+            <ul class="navbar__navigation">
+                <li class="navbar__navigation-item"><a href="{{url_for('home')}}" class="navbar__link">Market</a></li>
+                <li class="navbar__navigation-item"><a href="{{url_for('page_stocks')}}" class="navbar__link">Stocks</a></li>
+                <li class="navbar__navigation-item"><a href="/backtest-vwap/" class="navbar__link">BackTesting: VWAP</a></li>
+                <li class="navbar__navigation-item"><a href="/backtest-sma/" class="navbar__link">BackTesting: SMA</a></li>
+                <li class="navbar__navigation-item"><a href="/backtest-rsi/" class="navbar__link">BackTesting: RSI</a></li>
+            </ul>
+
+        </section>
+
+    </header>
+
+<!--Content of website-->
+    <main>
+        <div class = "flex-container">
+            <!-- TradingView Widget BEGIN -->
+            <div class="flex-child marketview">
+                <div class="tradingview-widget-container__widget"></div>
+                <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener" target="_blank"><span class="blue-text">Financial Markets</span></a> by TradingView</div> -->
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                {
+                "colorTheme" : "light",
+                "dateRange" : "12M",
+                "showChart": true,
+                "locale": "en",
+                "largeChartUrl": "",
+                "isTransparent": false,
+                "showSymbolLogo": true,
+                "width": "500",
+                "height": "720",
+                "plotLineColorGrowing": "rgba(33, 150, 243, 1)",
+                "plotLineColorFalling": "rgba(33, 150, 243, 1)",
+                "gridLineColor": "rgba(240, 243, 250, 1)",
+                "scaleFontColor": "rgba(120, 123, 134, 1)",
+                "belowLineFillColorGrowing": "rgba(33, 150, 243, 0.12)",
+                "belowLineFillColorFalling": "rgba(33, 150, 243, 0.12)",
+                "symbolActiveColor": "rgba(33, 150, 243, 0.12)",
+                "tabs": [
+                {
+                    "title": "Indices",
+                    "symbols": [
+                    {
+                        "s": "FOREXCOM:SPXUSD",
+                        "d": "S&P 500"
+                    },
+                    {
+                        "s": "FOREXCOM:NSXUSD",
+                        "d": "Nasdaq 100"
+                    },
+                    {
+                        "s": "FOREXCOM:DJI",
+                        "d": "Dow 30"
+                    },
+                    {
+                        "s": "INDEX:NKY",
+                        "d": "Nikkei 225"
+                    },
+                    {
+                        "s": "INDEX:DEU30",
+                        "d": "DAX Index"
+                    },
+                    {
+                        "s": "FOREXCOM:UKXGBP",
+                        "d": "FTSE 100"
+                    }
+                    ],
+                    "originalTitle": "Indices"
+                },
+                {
+                    "title": "Commodities",
+                    "symbols": [
+                    {
+                        "s": "CME_MINI:ES1!",
+                        "d": "S&P 500"
+                    },
+                    {
+                        "s": "CME:6E1!",
+                        "d": "Euro"
+                    },
+                    {
+                        "s": "COMEX:GC1!",
+                        "d": "Gold"
+                    },
+                    {
+                        "s": "NYMEX:CL1!",
+                        "d": "Crude Oil"
+                    },
+                    {
+                        "s": "NYMEX:NG1!",
+                        "d": "Natural Gas"
+                    },
+                    {
+                        "s": "CBOT:ZC1!",
+                        "d": "Corn"
+                    }
+                    ],
+                    "originalTitle": "Commodities"
+                },
+                {
+                    "title": "Bonds",
+                    "symbols": [
+                    {
+                        "s": "CME:GE1!",
+                        "d": "Eurodollar"
+                    },
+                    {
+                        "s": "CBOT:ZB1!",
+                        "d": "T-Bond"
+                    },
+                    {
+                        "s": "CBOT:UB1!",
+                        "d": "Ultra T-Bond"
+                    },
+                    {
+                        "s": "EUREX:FGBL1!",
+                        "d": "Euro Bund"
+                    },
+                    {
+                        "s": "EUREX:FBTP1!",
+                        "d": "Euro BTP"
+                    },
+                    {
+                        "s": "EUREX:FGBM1!",
+                        "d": "Euro BOBL"
+                    }
+                    ],
+                    "originalTitle": "Bonds"
+                },
+                {
+                    "title": "Forex",
+                    "symbols": [
+                    {
+                        "s": "FX:EURUSD"
+                    },
+                    {
+                        "s": "FX:GBPUSD"
+                    },
+                    {
+                        "s": "FX:USDJPY"
+                    },
+                    {
+                        "s": "FX:USDCHF"
+                    },
+                    {
+                        "s": "FX:AUDUSD"
+                    },
+                    {
+                        "s": "FX:USDCAD"
+                    }
+                    ],
+                    "originalTitle": "Forex"
+                }
+                ]
+            }
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
+        
+
+
+            <!-- TradingView Widget BEGIN -->
+            <div class="flex-child crypto">
+                <div class="tradingview-widget-container__widget"></div>
+                <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/cryptocurrencies/prices-all/" rel="noopener" target="_blank"><span class="blue-text">Cryptocurrency Markets</span></a> by TradingView</div> -->
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+                {
+                "width": 910,
+                "height": 720,
+                "defaultColumn": "overview",
+                "screener_type": "crypto_mkt",
+                "displayCurrency": "USD",
+                "colorTheme": "light",
+                "locale": "en"
+                }
+                </script>
+                <!-- TradingView Widget END -->
+            </div>
+
+            <div class="flex-child econ-calendar">
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/currencies/economic-calendar/" rel="noopener" target="_blank"><span class="blue-text">Economic Calendar</span></a> by TradingView</div> -->
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+                    {
+                    "colorTheme": "light",
+                    "isTransparent": false,
+                    "width": "600",
+                    "height": "600",
+                    "locale": "en",
+                    "importanceFilter": "-1,0,1"
+                }
+                    </script>
+                </div>
+                <!-- TradingView Widget END -->
+            </div>
+
+            <div class="flex-child fx">
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/currencies/forex-cross-rates/" rel="noopener" target="_blank"><span class="blue-text">Exchange Rates</span></a> by TradingView</div> -->
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
+                    {
+                    "width": 800,
+                    "height": 600,
+                    "currencies": [
+                    "EUR",
+                    "USD",
+                    "JPY",
+                    "GBP",
+                    "AUD",
+                    "CAD",
+                    "NZD",
+                    "CNY",
+                    "IDR",
+                    "KRW"
+                    ],
+                    "isTransparent": false,
+                    "colorTheme": "light",
+                    "locale": "en"
+                }
+                    </script>
+                </div>
+                <!-- TradingView Widget END -->
+
+
+            </div>
+        </div>
+
+    </main>
+
+
+
+<!--Footer of website-->
+    <footer class = "footer">
+   
+        <div class="footer__content">
+
+            <section class="left">
+                <a class="footer__item">Made by Guangbin Jin</a>
+                <a class="footer__item">About</a>
+            </section>
+
+            <section class="right">
+                <div class="footer__column">
+                    <a class="footer__item" href="{{url_for('home')}}">Market Overview</a>
+                    <a class="footer__item" href="{{url_for('page_stocks')}}">Stock Details</a>
+                </div>
+
+                <div class="footer__column">
+                    <a class="footer__item" href="/backtest-vwap/">Back-testing: VWAP</a>
+                    <a class="footer__item" href="/backtest-sma/">Back-testing: SMA</a>
+                    <a class="footer__item" href="/backtest-rsi/">Back-ack-testing: RSI</a>
+                </div>
+
+            </section>
+
+
+    </footer>
+
+    
+</body>
+
+</html>

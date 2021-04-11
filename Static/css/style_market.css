@@ -1,0 +1,159 @@
+html{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+*,
+*::before
+*::after{
+    box-sizing: inherit;
+}
+/**************** body  ****************/
+
+body{
+    box-sizing: border-box;
+    max-width: 90rem;
+    margin:1rem auto 0 auto;
+}
+
+/**************** Ticker Tape Widget ****************/
+
+.TV_TickerTapeWidget{
+    margin: 10px;
+}
+
+/**************** Navbar style ****************/
+
+.navbar{
+    max-width: 90rem;
+    margin: 1rem auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color:#28363a;
+}
+
+.navbar__brand{
+    display: flex;
+    align-items: center;
+}
+
+.navbar__logo{
+    margin-right: 60px;
+}
+
+.img{
+    width: 1rem;
+    height: 1rem;
+}
+
+
+.navbar__navigation{
+    display: flex;
+    flex-direction: colum;
+    padding: 1rem;
+    list-style: none;
+    justify-content: space-between;
+    font-family: fantasy;
+    margin-left: 20px;
+
+}
+
+.navbar__navigation-item{
+    margin-top: 110px;
+    margin-left: 120px;
+
+}
+
+.navbar__link{
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+}
+
+/**************** Main style ****************/
+
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90rem;
+    justify-content: space-between;
+
+
+}
+
+.flex-child:first-child {
+    flex: 1;
+    margin-right: 20px;
+    border: 1px solid #28363a;
+}  
+
+.flex-child:nth-child(2){
+    flex: 2;
+    justify-content: flex-end;
+    border: 1px solid #28363a;
+} 
+
+.flex-child:nth-child(3){
+    margin-top: 20px;
+    margin-right: 20px;
+    max-width: 55rem;
+    border: 1px solid #28363a;
+} 
+
+.flex-child:nth-child(4) {
+    margin-top: 20px;
+    justify-content: flex-end;
+    border: 1px solid #28363a;
+
+} 
+
+
+/**************** Footer style ****************/
+.footer{
+    background-color: #28363a;
+    margin:50px 0 0 0;
+    padding: 40px 0;
+    border-top: 4px solid black;
+    color: white;
+    font-size: 16px;
+   }
+
+.footer__content{
+   max-width:  80rem;
+   margin: 0 auto;
+   display: flex;
+   flex-direction: row;
+}
+
+.footer .left{
+   flex-grow:2;
+   display: flex;
+   flex-direction: column;
+}
+
+.footer .right{
+   flex-grow:1;
+   display: flex;
+   flex-direction: row;
+}
+
+.footer__column{
+   display: flex;
+   flex-direction: column;
+   margin-left: 80px;
+}
+
+.footer__item{
+   margin-top: 5px;
+   color: white;
+   text-decoration: none;
+}
+.footer__item:hover{
+   text-decoration: none;
+}
+
+
+
+

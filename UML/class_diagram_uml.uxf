@@ -1,0 +1,90 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>530</x><y>7</y><w>230</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Python Class&gt;&gt;
+Data
+--
+--
++ which_API: string
++ token: string
+--
++ IEX_daily_pricing_data(): DataFrame
++ yahoo_pricing_data(): DataFrame
++ SF_daily_pricing_data(): DataFrame
++ SF_income_statement(): DataFrame
++ SF_balance_sheet(): DataFrame
++ SF_cashflow_statement(): DataFrame
++ IB_pricing_data(): DataFrame
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>227</y><w>210</w><h>200</h></coordinates><panel_attributes>&lt;&lt;Python Class&gt;&gt;
+Strategy
+--
+--
++ brokerage_platform: string
++ user_id: string
++ password: string
+--
+--
++ Implement_SMA(): None
++ Implement_RSI(): None
++ submit_buy_order(): None
++ submit_sell_order(): None
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>260</x><y>227</y><w>250</w><h>200</h></coordinates><panel_attributes>&lt;&lt;Python Class&gt;&gt;
+BackTesting
+--
+--
++ df: DataFrame
+--
++ SMA_single_parameter(): DataFrame
++ SMA_bulk_parameters(): DataFrame
++ _sma_add_signal(): DataFrame
++ RSI_single_parameter(): DataFrame
++ _rsi_add_signal(): DataFrame
++ Bollinger_single_parameter(): DataFrame
++ _bollinger_add_signal(): DataFrame
++ backtesting(): DataFrame
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>457</y><w>190</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Python Class&gt;&gt;
+Visualization
+--
+--
++ df: DataFrame
+--
++ sma_plot_result(): None
++ rsi_plot_result(): None
++boll_plot_result():None
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>457</y><w>190</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Python Class&gt;&gt;
+Email_Notification
+--
+--
++ email_add: str
++ email_password: str
++ mail_server: str
+--
++ send_buy_notification(): None
++ send_sell_notification(): None
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>457</y><w>190</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Python Class&gt;&gt;
+Ib_App
+--
+--
+
++ error(): None
++ nextValidId(): None
++ orderStatus(): None
++ openOrder(): None
++ execDetails(): None
++ set_order_attributes(): None
++ stop(): None
++ main(): None
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>310</x><y>7</y><w>190</w><h>90</h></coordinates><panel_attributes>&lt;&lt;Python Class&gt;&gt;
+App
+--
+--
+
++ WebApp(): None
++ Flask(): None
+
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>

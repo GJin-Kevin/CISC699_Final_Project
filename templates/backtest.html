@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATA</title>
+    <link rel = "stylesheet" href="/static/css/style_backtest.css" />
+</head>
+
+
+<body>
+
+<!--Header of website-->
+
+    <header class="header_sector">
+        <section class="TV_TickerTapeWidget">
+            <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Ticker Tape</span></a> by TradingView</div> -->
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                {
+                "symbols" : [
+                {
+                    "proName": "FOREXCOM:SPXUSD",
+                    "title": "S&P 500"
+                },
+                {
+                    "proName": "FOREXCOM:NSXUSD",
+                    "title": "Nasdaq 100"
+                },
+                {
+                    "proName": "FX_IDC:EURUSD",
+                    "title": "EUR/USD"
+                },
+                {
+                    "proName": "BITSTAMP:BTCUSD",
+                    "title": "BTC/USD"
+                },
+                {
+                    "proName": "BITSTAMP:ETHUSD",
+                    "title": "ETH/USD"
+                }
+                ],
+                "showSymbolLogo": true,
+                "colorTheme": "light",
+                "isTransparent": false,
+                "displayMode": "adaptive",
+                "locale": "en"
+            }
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
+
+        </section>
+    
+        <section class = "navbar">
+
+            <div class="navbar__brand">
+                <img src="/static/src/cata.png" alt="CATA Logo" class="navbar__logo"</>
+            </div>
+            <ul class="navbar__navigation">
+                <li class="navbar__navigation-item"><a href="{{url_for('home')}}" class="navbar__link">Market</a></li>
+                <li class="navbar__navigation-item"><a href="{{url_for('page_stocks')}}" class="navbar__link">Stocks</a></li>
+                <li class="navbar__navigation-item"><a href="/dashapp-backtest/" class="navbar__link">Back-testing</a></li>
+                <li class="navbar__navigation-item"><a href="#" class="navbar__link">Other</a></li>
+            </ul>
+
+        </section>
+
+    </header>
+
+<!--Content of website-->
+<main>
+    
+<h1>Backtest</h1>
+
+</main>
+
+
+<!--Footer of website-->
+    <footer class = "footer">
+   
+        <div class="footer__content">
+
+            <section class="left">
+                <a class="footer__item">Made by Guangbin Jin</a>
+                <a class="footer__item">About</a>
+            </section>
+
+            <section class="right">
+                <div class="footer__column">
+                    <a class="footer__item" href="{{url_for('home')}}">Market Overview</a>
+                    <a class="footer__item" href="{{url_for('page_stocks')}}">Stock Details</a>
+                </div>
+
+                <div class="footer__column">
+                    <a class="footer__item" href="/dashapp-backtest/">Back-testing</a>
+                    <a class="footer__item">Other</a>
+                </div>
+
+            </section>
+
+
+    </footer>
+
+    
+</body>
+
+</html>
